@@ -1,0 +1,114 @@
+doctype html
+head
+  meta(charset='utf-8')
+  meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
+  meta(name='description', content='')
+  meta(name='author', content='')
+  title Bus Service Assessment Site
+  link(rel='icon', type='image/x-icon', href='assets/bus.ico')
+  // Font Awesome icons (free version)
+  script(src='https://use.fontawesome.com/releases/v6.1.0/js/all.js', crossorigin='anonymous')
+  // Google fonts
+  link(rel='preconnect', href='https://fonts.gstatic.com')
+  link(href='https://fonts.googleapis.com/css2?family=Tinos:ital,wght@0,400;0,700;1,400;1,700&display=swap', rel='stylesheet')
+  link(href='https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap', rel='stylesheet')
+  // Core theme CSS (includes Bootstrap)
+  link(href='css/styles.css', rel='stylesheet')
+// Background Video
+video.bg-video(playsinline='playsinline', autoplay='autoplay', muted='muted', loop='loop')
+  source(src='assets/mp4/bg.mp4', type='video/mp4')
+// Masthead
+.masthead
+  .masthead-content.text-white
+  
+    .container-fluid.px-4.px-lg-0
+      h1.fst-italic.lh-1.mb-4 Bus Service Assessment Site
+      p.mb-6
+        | On our site you can leave a comment about the bus you ride and get stars from the opinions of others. 
+        br
+        |  And you can also check the safety drive ratings of buses in Seoul!
+      p &nbsp;
+      div.row.justify-content-md-center
+        if errors
+          each error in errors
+            div(class="alert alert-warning alert-dismissible fade show" role="alert")= error.msg
+              button(type="button" class="close" data-dismiss="alert" aria-label="Close")
+                span(aria-hidden="true") &times;
+        if success_msg != ''
+          div(class="alert alert-success alert-dismissible fade show" role="alert")= success_msg
+            button(type="button" class="close" data-dismiss="alert" aria-label="Close")
+              span(aria-hidden="true") &times;
+        if error != ''
+          div(class="alert alert-warning alert-dismissible fade show" role="alert")= error
+            button(type="button" class="close" data-dismiss="alert" aria-label="Close")
+              span(aria-hidden="true") &times;
+      //form#contactForm(data-sb-form-api-token='API_TOKEN')
+        // Email address input
+        .row.input-group-newsletter
+        div.row.justify-content-md-center
+        
+            //a(href='/dashboard' style='text-align:center')
+              button#submitButton.btn.btn-primary.disabled(type='submit' style='text-align:center') 버스 순위
+            p 
+            //a(href='/post_star' style='text-align:center')
+              button#submitButton.btn.btn-primary.disabled(type='submit') 건의 사항 평점
+            p
+            //a(href='/post' style='text-align:center')
+              button#submitButton.btn.btn-primary.disabled(type='submit') 건의 사항 제출
+      if name
+        table(style='border-spacing: 15px; border-collapse: separate;')
+          tr
+            td
+              p
+              a(href='/dashboard' style='text-align:center')
+                button#submitButton.btn.btn-primary.disabled(type='submit' style='text-align:center') 전체 보기
+              //p 
+              //a(href='/post_star' style='text-align:center')
+                button#submitButton.btn.btn-primary.disabled(type='submit') 건의 사항
+            td
+              p
+              a(href='/post' style='text-align:center')
+                button#submitButton.btn.btn-primary.disabled(type='submit') 건의 사항 제출
+            td
+              p
+              a(href='/users/logout' style='text-align:center')
+                button#submitButton.btn.btn-primary.disabled(type='submit') 로그아웃
+      else
+            
+        div(style="margin:auto;text-align:center;")
+          form(method='post' action='/users/home' style="display:inline-block;")
+              h1.fst-italic.h3.mb-3.font-weight-normal Welcome!
+              
+              br
+              input.form-control.mt-sm-3(name='email' type='email' placeholder='Email address' required='' autofocus='' )
+              input.form-control.mt-sm-3(name='password' type='password' placeholder='Password' required='')
+              br
+              //button.btn.btn-lg.btn-primary.btn-block(type='submit') 로그인
+              
+              button#submitButton.btn.btn-primary.btn-block(type='submit' style='background-color:#e0a800; opacity: 0.65;') Login
+
+              p
+              a(href='/users/register' style='text-align:center')
+                button#submitButton.btn.btn-primary.disabled(type='submit') Sign Up
+
+// Social Icons
+// For more icon options, visit https://fontawesome.com/icons?d=gallery&p=2&s=brands
+//.social-icons
+  .d-flex.flex-row.flex-lg-column.justify-content-center.align-items-center.h-100.mt-3.mt-lg-0
+    a.btn.btn-dark.m-3(href='#!')
+      i.fab.fa-twitter
+    a.btn.btn-dark.m-3(href='#!')
+      i.fab.fa-facebook-f
+    a.btn.btn-dark.m-3(href='#!')
+      i.fab.fa-instagram
+
+
+// Bootstrap core JS
+script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js')
+// Core theme JS
+script(src='js/scripts.js')
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * *                               SB Forms JS                               * *
+// * * Activate your form at https://startbootstrap.com/solution/contact-forms * *
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+script(src='https://cdn.startbootstrap.com/sb-forms-latest.js')

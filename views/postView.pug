@@ -1,0 +1,29 @@
+
+extends ./layout
+
+block content
+    section.jumbotron.text-center
+        .container
+            //h1=title
+            h5 버스번호: #{busnum}
+            p(style="font-weight:bold;font-size:30px")=main
+    .container
+
+        .row
+            .col-12
+                hr
+                form(action='/post/comment' method='post' style='text-align:center;' )
+                    textarea(type='text' name='comment' rows='2' placeholder='댓글을 입력해 주세요' cols='90' )
+                    input.form-control(type='text' name='post_id' placeholder='제목' required value=post_id style="display:none")
+                    button#submitButton.btn.btn-primary(type='submit' style='margin-bottom:50px;margin-left:10px;') 댓글 달기
+
+        each comment, index in comments
+            .row
+                .col-2
+                    p #{comment.nickname}
+                .col-8
+                    p #{comment.comment}
+                .col-2
+                    if comment.myComment
+                        -var del = "/post/comment/delete?comment_id=" + comment._id + "&post_id=" + comment.post_id
+                        a#submitButton.btn.btn-primary(href=del role='button') 삭제

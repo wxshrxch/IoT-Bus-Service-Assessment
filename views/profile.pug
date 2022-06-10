@@ -1,0 +1,26 @@
+extends layout
+
+block content
+    br
+    br
+    br
+    br
+    #page-content.page-content.page-container
+      .card.hovercard
+        .cardheader
+        .avatar
+          img(alt='', src='images/user.png')
+        .info
+          .title
+            p.m-b-10.f-w-600(style='margin:5px;padding-top:1%;padding-bottom:2px;font-weight:bold;font-size:20px;', <='', body='') 닉네임
+            .f-w-400=nickname
+          p.m-b-10.f-w-600p(style='margin:0px;padding-top:1%;padding-bottom:2px;font-weight:bold;font-size:20px;', <='', body='') 간단 소개
+          .f-w-400=introduce
+           p.m-b-10.f-w-600(style='margin:0px;padding-top:1%;padding-bottom:2px;font-weight:bold;font-size:20px;', <='', body='') 이메일
+          .f-w-400=email
+           p.m-b-10.f-w-600(style='margin:0px;padding-top:1%;padding-bottom:2px;font-weight:bold;font-size:20px;', <='', body='') 가입 날짜
+          .f-w-400=date
+        .bottom
+            br
+            a.btn.btn-primary.btn-twitter.btn-sm(style="width:97px;height:33px;background-color:#ffc107;" href='/profileEdit' )
+                p.m-b-10.f-w-600 프로필 수정

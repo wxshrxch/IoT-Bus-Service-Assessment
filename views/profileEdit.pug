@@ -1,0 +1,25 @@
+extends layout
+
+block content
+    br
+    br
+
+    #page-content.page-content.page-container
+      .card.hovercard
+        .cardheader
+        .avatar
+          img(alt='', src='images/user.png')
+        .info
+          .title
+          form(action="/edit", method="post")
+            p.m-b-10.f-w-600(style='margin:0px;padding-top:1%;padding-bottom:2px;font-weight:bold;font-size:20px;', <='', body='') 닉네임
+                input.form-control.mt-sm-3(name='nickname' type='text' placeholder='닉네임' required value=nickname)
+            p.m-b-10.f-w-600p(style='margin:0px;padding-top:1%;padding-bottom:2px;font-weight:bold;font-size:20px;', <='', body='') 간단 소개
+                input.form-control.mt-sm-3(name='introduce' type='text' placeholder='간단 소개' required value=introduce)
+            p.m-b-10.f-w-600(style='margin:0px;padding-top:1%;padding-bottom:2px;font-weight:bold;font-size:20px;', <='', body='') 이메일
+            .f-w-400=email
+            p.m-b-10.f-w-600(style='margin:0px;padding-top:1%;padding-bottom:2px;font-weight:bold;font-size:20px;', <='', body='') 가입 날짜
+            .f-w-400=date
+            .bottom
+                br
+                button#submitButton.btn.btn-primary(type='submit') 수정

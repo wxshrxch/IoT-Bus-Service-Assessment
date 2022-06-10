@@ -1,0 +1,41 @@
+
+extends ./layout.pug
+
+block content
+    .container
+    .pd-ltr-20.xs-pd-20-10
+        .min-height-200px
+        .card-box.mb-30(style="text-align:center;")
+            .pd-20
+        div(calss='row justify-content-center')
+            .col-10
+                .row
+                    .col-12
+                        //h2(style='text-align:center;') #{"건의사항 제출"}
+                        h1(style='text-align:center;') 건의사항 제출
+                        br
+                        form(method='POST' action='/post/register' style='padding-left:140px;')
+                            br
+                            span.dropbtn_content 버스 번호 : 
+                            select.form-select-sm(aria-label="Default select example" type='text'  name='busnum'  required='' class='a' onchange='window.location.href = "/post?busNum="+this.options[this.selectedIndex].text')#busnum 
+                                option(value='a' style='text-align:center;' href='#' disabled selected) -전체보기-
+                                each doc, index in doc1
+                                    a = a
+                                    option(value=doc.노선명 style='text-align:center;' selected= (num == doc.노선명 ? true : false )) #{doc.노선명}
+  
+               
+                            br
+                            br
+                            input.form-control(type='text' name='main' placeholder='건의사항' value='' required='' style='height:70px')
+                            br
+                            br
+                            .row.justify-content-between
+                                .col-2
+                                .col-0.mr-sm-3
+                                    //input(type='submit' value='등록' name='submit')
+                                div(style="text-align:center")
+                                    button#submitButton.btn.btn-primary(type='submit') 등록
+                            br
+                            br
+                            br
+                            br

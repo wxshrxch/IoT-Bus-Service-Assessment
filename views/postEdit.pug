@@ -1,0 +1,35 @@
+extends layout
+
+block content
+    .container
+        div(calss='row justify-content-center')
+            .col-10
+                .row
+                    .col-12
+                        form(method='POST' action='/post/edit')
+                            div(style='font-weight:bold;')
+                            br
+                            br
+                            br
+                            span.dropbtn_content 버스 번호: 
+                            select.form-select-sm(type='text'  name='busnum'  required='')#busnum 
+                                option(value='a' style='text-align:center;') #{busnum}
+                                each doc, index in doc1
+                                    const a = $("#busnum > option:selected").text();
+                                    option(value=$a style='text-align:center;' disabled) #{doc.노선명}
+                                    const a = this.options[this.selectedIndex].text
+                            br
+                            br
+                            input.form-control(type='text' name='main' placeholder='건의사항' style='height:70px' required value=title)
+                            br
+                            input.form-control(type='text' name='post_id' placeholder='제목' required value=post_id style="display:none")
+                            .row.justify-content-between
+                                .col-2
+                                .col-0.mr-sm-3
+                                    //input(type='submit' value='등록' name='submit')
+                                div(style='text-align:center')
+                                    button#submitButton.btn.btn-primary(type='submit') 등록
+                            br
+                            br
+                            br
+                            br

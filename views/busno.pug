@@ -1,0 +1,132 @@
+
+extends ./layout.pug
+block content
+
+    .container
+    .pd-ltr-20.xs-pd-20-10
+        .min-height-200px
+        .card-box.mb-30(style="text-align:center;")
+        .pd-20
+            form(name='busnum1', method='post' style='text-align:center; font-size:20px;font-weight:bold;')
+                span.dropbtn_content 버스 번호 :  #{q2}번 버스
+            br
+            form(name='busnum1', method='post' style='text-align:center; font-size:20px;font-weight:inherit;')
+                select.form-select-sm(aria-label="Default select example" type='text'  name='busnum'  required='' class='a' onchange='window.location.href = "/busno?id="+this.options[this.selectedIndex].text')#busnum 
+                    option(value='-전체보기-' style='text-align:center;' ) -전체보기-
+                    each doc, index in doc1
+                        option(value=doc.노선명 style='text-align:center;' selected= (q2 == doc.노선명 ? true : false ) ) #{doc.노선명}                   
+        br
+
+        table(style='margin: auto; text-align: center;')
+            thead
+                tr
+                    th(colspan="2" style='font-size:40px;font-weight:bold;padding-right:100px;') 승차감 평점
+
+                    th(colspan="2" style='font-size:40px;font-weight:bold;padding-left:300px;') 건의사항 긍정 평점
+
+
+
+            tbody
+                if(docs)
+                tr  
+                    td
+                        //if(mpu_all_count>0)
+                        div(style = "text-align:center; font-weight:bold; font-size:1.3em;padding-right:100px;") 
+                            .star2-rating
+                                span(style= mpu_count )
+                        //else 
+                            p &nbsp;
+
+                    td  
+                        div(style = "text-align:center; font-weight:bold; font-size:1.3em;")
+                            p &nbsp;
+                    td
+                        if(all_count>0)
+                            div(style = "text-align:center; font-weight:bold; font-size:1.3em;padding-left:300px;") 
+                                .star-rating
+                                    span(style= count1 )
+                        else
+                            p &nbsp;
+
+
+    .container
+    .pd-ltr-20.xs-pd-20-10
+        .min-height-200px
+        .card-box.mb-30(style="text-align:center;")
+            .pb-20
+                table.data-table.table.stripe.hover.nowrap
+                    thead
+                        tr
+                            th 버스번호
+                            th 내용
+                            th 승차감 평점
+                            th 긍정 평점
+                            th 작성일
+                            th.datatable-nosort 관리
+
+                    tbody
+                        if(docs)
+                        each doc, index in docs
+                            if(q2 === doc.busnum)
+                                tr
+                                    td.table-plus #{doc.busnum}
+                                    td 
+                                        -var view = "/post/view?post_id=" + doc._id
+                                            a(href=view role='button' style="color:black; font-size:16px; font-weight:lighter; text-decoration: none;") #{doc.main} 
+                                    td 
+                                        each aa,index in eun
+                                            if(doc.busnum == aa)
+                                                p &#x2B50; #{seo[index]}
+                                                -var leeeun = 'a'
+                                            else
+                                                if(index+1 == lee)
+                                                    if(leeeun != 'a')
+                                                        p &#x2B50; 0.0
+                                    td 
+                                        each bb,index in do_star1 
+                                            if(doc.busnum == bb)
+                                                p &#x2B50; #{do_star2[index]}
+
+                                    td #{a[index]}
+                                
+                                    if doc.myPost
+    
+                                        i.typcn.typcn-eye.btn-icon-append
+                                        td
+                                            a.btn.btn-success.btn-sm.btn-icon-text.mr-3(style='margin-left:15px;' href="/post/edit?post_id=" + doc._id role='button')
+                                                | 편집 
+                                                i.typcn.typcn-edit.btn-icon-append
+                                            a.btn.btn-danger.btn-sm.btn-icon-text(style='margin-left:15px;' href="/post/delete?post_id=" + doc._id role='button')
+                                                | 삭제
+                                                i.typcn.typcn-delete-outline.btn-icon-append
+
+                                    else 
+                                        td &nbsp;
+
+
+            
+
+        
+        script(src='./scripts/core.js')
+        script(src='./scripts/script.min.js')
+        script(src='./scripts/process.js')
+        script(src='./scripts/layout-settings.js')
+        script(src='./plugins/datatables/js/jquery.dataTables.min.js')
+
+        script(src='./plugins/datatables/js/dataTables.responsive.min.js')
+        script(src='./plugins/datatables/js/responsive.bootstrap4.min.js')
+
+        script(src='./plugins/datatables/js/dataTables.buttons.min.js')
+        script(src='./plugins/datatables/js/buttons.bootstrap4.min.js')
+        script(src='./plugins/datatables/js/buttons.print.min.js')
+        script(src='./plugins/datatables/js/buttons.html5.min.js')
+        script(src='./plugins/datatables/js/buttons.flash.min.js')
+        script(src='./plugins/datatables/js/pdfmake.min.js')
+        script(src='./plugins/datatables/js/vfs_fonts.js')
+        script.
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'UA-119386393-1');
+        script(src='./scripts/datatable-setting.js')        
+

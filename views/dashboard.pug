@@ -1,0 +1,225 @@
+extends ./layout.pug
+block content
+  .container
+  .pd-ltr-20.xs-pd-20-10
+    .min-height-200px
+    .card-box.mb-30(style="text-align:center;")
+      .pd-20
+         form(name='busnum1', method='post')
+      span.dropbtn_content 버스 번호 : 
+      select.form-select-sm(aria-label="Default select example" type='text'  name='busnum'  required='' class='a' onchange='window.location.href = "/busno?id="+this.options[this.selectedIndex].text')#busnum 
+        option(value='a' style='text-align:center;' href='#' disabled selected) -전체보기-
+        each doc, index in doc1
+          a = a
+          option(value='doc.노선명' style='text-align:center;' onclick="location.href='index.html'") #{doc.노선명}
+    
+      .pb-20
+        table.data-table.table.stripe.hover.nowrap
+        
+          thead
+            tr
+              th(colspan="3" style='font-size:40px;font-weight:bold;') 승차감 순위
+
+              th(colspan="3" style='font-size:40px;font-weight:bold;') 건의사항 긍정 순위&nbsp;&nbsp;
+                a(href='/post_star' style='text-align:center')
+                    button#submitButton.btn.btn-primary(type='submit') 전체 보기
+
+
+          tbody
+            if(docs)
+            tr  
+                each ran, index in rank1
+                    if(index==0)
+                        if(mpu_count1 != 'a')
+                            th(style="font-size:20px;") 1위
+                            td
+                                each ran, index in rank1
+                                    p &nbsp; #{ran} &nbsp;&nbsp;
+                            td(style="border-right: 1px solid #444444;")
+                                each ran, index in rank1
+                                    if(index==0)
+                                        if(mpu_count1 != 'a')
+                                            .star2-rating
+                                                span(style= mpu_count1 )
+                                        else
+                if(count1!='a')
+                    if(mpu_count1 == 'a')
+                        td 
+                        td
+                        td(style="border-right: 1px solid #444444;")
+                each ran, index in do_rank1
+                    if(index==0)
+                        if(count1 != 'a')
+                            th(style="font-size:20px;") 1위
+                            td 
+                                each ran, index in do_rank1      
+                                    p &nbsp; #{ran} &nbsp;&nbsp;
+                            td 
+                                each ran, index in do_rank1
+                                    if(index==0)
+                                        if(count1 != 'a')
+                                            .star-rating
+                                                span(style= count1 )
+                                        else
+
+            tr
+                each ran, index in rank2
+                    if(index==0)
+                        if(mpu_count2 != 'a')
+                            th(style="font-size:20px;") 2위
+                            td
+                                each ran, index in rank2
+                                    p &nbsp; #{ran} &nbsp;&nbsp;
+                            td(style="border-right: 1px solid #444444;")
+                                each ran, index in rank2
+                                    if(index==0)
+                                        if(mpu_count2 != 'a')
+                                            .star2-rating
+                                                span(style= mpu_count2 )
+
+                                        else
+                if(count2!='a')
+                    if(mpu_count2 == 'a')
+                        td 
+                        td
+                        td(style="border-right: 1px solid #444444;")
+                each ran, index in do_rank2
+                    if(index==0)
+                        if(count2 != 'a')
+                            th(style="font-size:20px;") 2위
+                            td 
+                                each ran, index in do_rank2      
+                                    p &nbsp; #{ran} &nbsp;&nbsp;
+                            td 
+                                each ran, index in do_rank2
+                                    if(index==0)
+                                        if(count2 != 'a')
+                                            .star-rating
+                                                span(style= count2 )
+                                        else
+
+            tr
+                each ran, index in rank3
+                    if(index==0)
+                        if(mpu_count3 != 'a')
+                            th(style="font-size:20px;") 3위
+                            td
+                                each ran, index in rank3
+                                    p &nbsp; #{ran} &nbsp;&nbsp;
+                            td(style="border-right: 1px solid #444444;")
+                                each ran, index in rank3
+                                    if(index==0)
+                                        if(mpu_count3 != 'a')
+                                            .star2-rating
+                                                span(style= mpu_count3)
+                                        else
+                if(count3!='a')
+                    if(mpu_count3 == 'a')
+                        td 
+                        td
+                        td(style="border-right: 1px solid #444444;")
+                each ran, index in do_rank3
+                    if(index==0)
+                        if(count3 != 'a')
+                            th(style="font-size:20px;") 3위
+                            td 
+                                each ran, index in do_rank3    
+                                    p &nbsp; #{ran} &nbsp;&nbsp;
+                            td 
+                                each ran, index in do_rank3
+                                    if(index==0)
+                                        if(count3 != 'a')
+                                            .star-rating
+                                                span(style= count3 )
+                                        else
+            tr
+                each ran, index in rank4
+                    if(index==0)
+                        if(mpu_count4 != 'a')
+                            th(style="font-size:20px;") 4위
+                            td
+                                each ran, index in rank4
+                                    p &nbsp; #{ran} &nbsp;&nbsp;
+                            td(style="border-right: 1px solid #444444;")
+                                each ran, index in rank4
+                                    if(index==0)
+                                        if(mpu_count4 != 'a')
+                                            .star2-rating
+                                                span(style= mpu_count4 )
+                                    else
+                if(count4!='a')
+                    if(mpu_count4 == 'a')
+                        td 
+                        td
+                        td(style="border-right: 1px solid #444444;")
+                each ran, index in do_rank4
+                    if(index==0)
+                        if(count4 != 'a')   
+                            th(style="font-size:20px;") 4위                         
+                            td 
+                                each ran, index in do_rank4      
+                                    p &nbsp; #{ran} &nbsp;&nbsp;
+                            td 
+                                each ran, index in do_rank4
+                                    if(index==0)
+                                        if(count4 != 'a')
+                                            .star-rating
+                                                span(style= count4 )
+                                        else
+
+            tr
+                each ran, index in rank5
+                    if(index==0)
+                        if(mpu_count5 != 'a')
+                            th(style="font-size:20px;") 5위
+                            td
+                                each ran, index in rank5
+                                    p &nbsp; #{ran} &nbsp;&nbsp;
+                            td(style="border-right: 1px solid #444444;")
+                                each ran, index in rank5
+                                    if(index==0)
+                                        if(mpu_count5 != 'a')
+                                            .star2-rating
+                                                span(style= mpu_count5 )
+                                        else
+                if(count5!='a')
+                    if(mpu_count5 == 'a')
+                        td 
+                        td
+                        td(style="border-right: 1px solid #444444;")
+                each ran, index in do_rank5
+                    if(index==0)
+                        if(count5 != 'a')
+                            th(style="font-size:20px;") 5위
+                            td 
+                                each ran, index in do_rank5     
+                                    p &nbsp; #{ran} &nbsp;&nbsp;
+                            td 
+                                each ran, index in do_rank5
+                                    if(index==0)
+                                        if(count5 != 'a')
+                                            .star-rating
+                                                span(style= count5 )
+                                        else   
+    script(src='./scripts/core.js')
+    script(src='./scripts/script.min.js')
+    script(src='./scripts/process.js')
+    script(src='./scripts/layout-settings.js')
+    script(src='./plugins/datatables/js/jquery.dataTables.min.js')
+
+    script(src='./plugins/datatables/js/dataTables.responsive.min.js')
+    script(src='./plugins/datatables/js/responsive.bootstrap4.min.js')
+
+    script(src='./plugins/datatables/js/dataTables.buttons.min.js')
+    script(src='./plugins/datatables/js/buttons.bootstrap4.min.js')
+    script(src='./plugins/datatables/js/buttons.print.min.js')
+    script(src='./plugins/datatables/js/buttons.html5.min.js')
+    script(src='./plugins/datatables/js/buttons.flash.min.js')
+    script(src='./plugins/datatables/js/pdfmake.min.js')
+    script(src='./plugins/datatables/js/vfs_fonts.js')
+    script.
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-119386393-1');
+    script(src='./scripts/datatable-setting.js')               

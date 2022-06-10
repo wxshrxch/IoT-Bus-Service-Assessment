@@ -1,0 +1,44 @@
+
+extends layout
+
+block content
+    div.row.justify-content-md-center
+
+      if errors
+        each error in errors
+          div(class="alert alert-warning alert-dismissible fade show" role="alert")= error.msg
+            button(type="button" class="close" data-dismiss="alert" aria-label="Close")
+              span(aria-hidden="true") &times;
+    div(style="margin:auto;text-align:center;")
+      form(method="post" action="/users/register" style="display:inline-block;")
+        h1.h3.mb-3.font-weight-normal.d-flex.justify-content-center 회원가입
+       
+        br
+        if(name)
+          input.form-control.mt-sm-2(style="text-align:center; width:400px" name="name" type="text" placeholder="이름" required autofocus value=name)
+        else
+          input.form-control.mt-sm-2(style="text-align:center; width:400px" name="name" type="text" placeholder="이름" autofocus)
+
+        if(email)
+          input.form-control.mt-sm-2(style="text-align:center; width:400px" name="email" type="email" placeholder="이메일 주소 " required value=email)
+        else
+          input.form-control.mt-sm-2(style="text-align:center; width:400px" name="email" type="email" placeholder="이메일 주소 " required)
+
+        if(password)
+          input.form-control.mt-sm-2(style="text-align:center; width:400px" name="password" type="password" placeholder="4자리 이상 비밀번호" required value=password)
+        else
+          input.form-control.mt-sm-2(style="text-align:center; width:400px" name="password" type="password" placeholder="4자리 이상 비밀번호" required)
+
+        if(nickname)
+          input.form-control.mt-sm-2(style="text-align:center; width:400px" name="nickname" type="text" placeholder="닉네임" required value=nickname)
+        else
+          input.form-control.mt-sm-2(style="text-align:center; width:400px" name="nickname" type="text" placeholder="닉네임" required )
+
+        if(introduce)
+          input.form-control.mt-sm-2(style="text-align:center; width:400px" name="introduce" type="text" placeholder="간단 소개" required value=introduce)
+        else
+          input.form-control.mt-sm-2(style="text-align:center; width:400px" name="introduce" type="text" placeholder="간단 소개" required)
+          
+          br
+        div(style="text-align:center")
+          button.btn.btn-lg.btn-primary.btn-block(type="submit") Sign up
