@@ -1,5 +1,7 @@
 # IoT-Bus-Service-Assessment
 
+#### 관련 자세한 내용은 [[10조]버스 스마트 평가 시스템_결과보고서.pdf](https://github.com/chaeuny/IoT-Bus-Service-Assessment/blob/8fa97f558bc4a017c7efca13f1940bb556ff5448/%5B10%EC%A1%B0%5D%EB%B2%84%EC%8A%A4%20%EC%8A%A4%EB%A7%88%ED%8A%B8%20%ED%8F%89%EA%B0%80%20%EC%8B%9C%EC%8A%A4%ED%85%9C_%EA%B2%B0%EA%B3%BC%EB%B3%B4%EA%B3%A0%EC%84%9C.pdf) 에 기록되어있습니다.
+
 #### 2022년 1학기 IT 융합공학부 사물인터넷 트랙 캡스톤 디자인에서 진행한 프로젝트 입니다.
 
 #### 담당 업무
@@ -9,7 +11,7 @@
    - 프로젝트 총괄 : 발표자료 및 보고서 작성, 3D 외형 모델링 제작, 웹 템플릿 제작
    - 웹 페이지 및 디자인 : 전체 홈페이지 구조 및 디자인 설계, 메인화면 구현, Qr Code 제작, 버스 번호별 페이지 제작, 버스 노선별 게시글 필터링 구현
    - 급정거 급출발 탐지 : 실제 주행 데이터 수집 및 공식 도출(thredshold 값 설정), Complementary filter 적용
-   - AI 설계 및 구현(개인진행) : NLP모델(Vanilla RNN, CNN (forSentence Classification), Bidirectional LSTM 설계), Custom Dataset 크롤링, Ensemble Learning 구현
+   - AI 설계 및 구현(개인진행) : NLP모델(Vanilla RNN, CNN (forSentence Classification), Bidirectional LSTM 설계), Custom Dataset 크롤링, Ensemble Learning 구현(Voting :  weighted sum 방식을 이용한 optimal weight 적용)
   
  - 이은서
    - 웹 디자인 : 세부 페이지 디자인 및 기능 구현, 별점 기능 구현, Qr code 구현, API 호출 등
@@ -51,6 +53,7 @@
   - 3개의 NLP 모델을 이용한 Ensemble learning 적용
   - Custom data set 제작
   - 작성된 건의 사항에 대한 긍, 부정을 판단해 건의 사항 긍정 평점 계산
+  - Voting :  weighted sum 방식을 이용한 optimal weight 적용
 
 
 ### 기대 효과
